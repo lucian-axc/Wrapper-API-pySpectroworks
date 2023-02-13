@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Wrapper for Spectroworks API</title>
+        <link href="https://fonts.googleapis.com/css?family=Cambo|Roboto" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/reset.css">
+        <link rel="stylesheet" type="text/css" href="./css/styles.css">
+    </head>
+    <body>
+        <main>
+            <section id="selectors-bar">
+                <div class="selector">
+                    <label for="projects-names">Select project</label>
+                    <select class="dropdown" name="projects-names" id="projects-names">
+                        <option value="" default>- - -</option>
+                        <option value="0">Project name 1</option>
+                        <option value="1">Project name 2</option>
+                        <option value="2">Project name 3</option>
+                    </select>
+                </div>
+                
+                <div class="selector">
+                    <label for="samples-names">Select sample</label>
+                    <select class="dropdown" name="samples-names" id="samples-names">
+                        <option value="" default>- - -</option>
+                        <option value="0">Sample name 1</option>
+                        <option value="1">Sample name 2</option>
+                        <option value="2">Sample name 3</option>
+                    </select>
+                </div>
+            </section>
+            
+            <section id="all-spectra">
+                <div class="container-spectrum">
+                    <h3>B side reference spectrum</h3>
+                    <div class="container-w-a-data">
+                        <div class="target-w-bar">
+                            <p>Target wavelength:</p>
+                            <input class="input-w" type="text" placeholder="type wavelength...">
+                            <button class="btn-get-data">Go!</button>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Wavelength:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Attenuance:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-spectrum">
+                    <h3>A side sample spectrum</h3>
+                    <div class="container-w-a-data">
+                        <div class="target-w-bar">
+                            <p>Target wavelength:</p>
+                            <input class="input-w" type="text" placeholder="type wavelength...">
+                            <button class="btn-get-data">Go!</button>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Wavelength:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Attenuance:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-spectrum">
+                    <h3>B side sample spectrum</h3>
+                    <div class="container-w-a-data">
+                        <div class="target-w-bar">
+                            <p>Target wavelength:</p>
+                            <input class="input-w" type="text" placeholder="type wavelength...">
+                            <button class="btn-get-data">Go!</button>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Wavelength:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Attenuance:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="container-spectrum">
+                    <h3>D side sample spectrum</h3>
+                    <div class="container-w-a-data">
+                        <div class="target-w-bar">
+                            <p>Target wavelength:</p>
+                            <input class="input-w" type="text" placeholder="type wavelength...">
+                            <button class="btn-get-data">Go!</button>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Wavelength:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                        <div class="w-a-result">
+                            <p>Attenuance:</p>
+                            <p class="data-result">see value...</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </section>
+
+
+            <p id="att">att number</p>
+
+        </main>
+        <script src='./json_file.js'></script>
+        <script>
+            paragraph = document.getElementById('att')
+            paragraph.textContent = jsonData.attenuance
+            // paragraph.addEventListener('click', function() {
+            //     paragraph.textContent = jsonData.attenuance
+            //     console.log(jsonData.attenuance)
+            // })
+        </script>
+    </body>
+</html>
