@@ -9,15 +9,13 @@
         <link rel="stylesheet" type="text/css" href="./css/styles.css">
     </head>
     <body>
+        
         <main>
             <section id="selectors-bar">
                 <div class="selector">
                     <label for="projects-names">Select project</label>
                     <select class="dropdown" name="projects-names" id="projects-names">
                         <option value="" default>- - -</option>
-                        <option value="0">Project name 1</option>
-                        <option value="1">Project name 2</option>
-                        <option value="2">Project name 3</option>
                     </select>
                 </div>
                 
@@ -108,18 +106,10 @@
                 
             </section>
 
-
             <p id="att">att number</p>
 
         </main>
-        <script src='./json_file.js'></script>
-        <script>
-            paragraph = document.getElementById('att')
-            paragraph.textContent = jsonData.attenuance
-            // paragraph.addEventListener('click', function() {
-            //     paragraph.textContent = jsonData.attenuance
-            //     console.log(jsonData.attenuance)
-            // })
-        </script>
+        <script src="../src/json_file.js"></script>
+        <script src="../src/index.js"></script>
     </body>
 </html>
