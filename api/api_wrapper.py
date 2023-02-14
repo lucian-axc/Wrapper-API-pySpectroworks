@@ -12,13 +12,37 @@ conn = pyspectroworks.connect(api_key)
 projects = conn.get_projects()
 
 #functions for data extraction
+def get_names_projects_with_samples():
+    projects_with_samples = []
+
+    for pj in projects:
+        pj_entry = {}
+        samples_names = []
+        samples = pj.get_items()
+        
+        if len(samples) > 0:
+            for sample in samples:
+                attr = sample.sample_attributes
+                if attr.get('Sample name') != None:
+                    samples_names.append(attr['Sample name'])
+                else:
+                    samples_names.append('<No sample name>') #sample item has no name, however it exists with all its data
+        else:
+            samples_names = None #project has no sample items
+
+        pj_entry["project_name"] = pj.project_name
+        pj_entry["samples_names"] = samples_names
+        projects_with_samples.append(pj_entry)
+    
+    return projects_with_samples
+
 def get_projects_names():
     projects_names = []
     for pj in projects:
         projects_names.append(pj.project_name)
     return projects_names
 
-def get_samples_and_names(project_name, projects_names = get_projects_names()):
+def get_samples_and_names(project_name, projects_names):
     i = projects_names.index(project_name)
     pj = projects[i]
     samples = pj.get_items()
@@ -55,7 +79,6 @@ def get_closest_wa_data(spectrum, wavelength_target):
     
     if i == len(spectrum):
         return 'Target wavelength out of interval!'
-
 def get_spectrum_wa_pair(project_name, sample_name, spectrum_type, wavelength_target):
     s_n = get_samples_and_names(project_name)
     samples_names = s_n[0]
@@ -69,19 +92,22 @@ def get_spectrum_wa_pair(project_name, sample_name, spectrum_type, wavelength_ta
 
 pjs_names = get_projects_names()
 
-# monolithic retrieval of data for a single project, single sample and single spectrum
-samples_names = get_samples_and_names(pjs_names[8], pjs_names)[0]
-attenuance = get_spectrum_wa_pair(
-                'Enzyme + VC + Water 27.05.2022',
-                'Water + VC + enzyme nr2',
-                'sample_A',
-                350
-            )
+# samples_names = get_samples_and_names(pjs_names[8], pjs_names)[0]
+# attenuance = get_spectrum_wa_pair(
+#                 'Enzyme + VC + Water 27.05.2022',
+#                 'Water + VC + enzyme nr2',
+#                 'sample_A',
+#                 350
+#             )
+
+# container = {
+#     "projectsNames": pjs_names,
+#     "samplesNames": samples_names,
+#     "wavelength - attenuance": attenuance
+# }
 
 container = {
-    "projectsNames": pjs_names,
-    "samplesNames": samples_names,
-    "wavelength - attenuance": attenuance
+    "projectsWithSamples": get_names_projects_with_samples()
 }
 
 json_object = json.dumps(container, indent = 2)
