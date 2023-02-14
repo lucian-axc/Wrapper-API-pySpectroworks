@@ -42,7 +42,7 @@ def get_projects_names():
         projects_names.append(pj.project_name)
     return projects_names
 
-def get_samples_and_names(project_name, projects_names):
+def get_samples_and_names(project_name):
     i = projects_names.index(project_name)
     pj = projects[i]
     samples = pj.get_items()
@@ -79,6 +79,7 @@ def get_closest_wa_data(spectrum, wavelength_target):
     
     if i == len(spectrum):
         return 'Target wavelength out of interval!'
+
 def get_spectrum_wa_pair(project_name, sample_name, spectrum_type, wavelength_target):
     s_n = get_samples_and_names(project_name)
     samples_names = s_n[0]
@@ -90,24 +91,57 @@ def get_spectrum_wa_pair(project_name, sample_name, spectrum_type, wavelength_ta
     return get_closest_wa_data(spectrum, wavelength_target)
 
 
-pjs_names = get_projects_names()
+projects_names = get_projects_names() #needed in get_samples_and_names
+spectrum_types = [ 'reference_B', 'sample_A', 'sample_B', 'sample_D' ]
+names_projects_with_samples = get_names_projects_with_samples()
 
-# samples_names = get_samples_and_names(pjs_names[8], pjs_names)[0]
-# attenuance = get_spectrum_wa_pair(
-#                 'Enzyme + VC + Water 27.05.2022',
-#                 'Water + VC + enzyme nr2',
-#                 'sample_A',
-#                 350
-#             )
 
-# container = {
-#     "projectsNames": pjs_names,
-#     "samplesNames": samples_names,
-#     "wavelength - attenuance": attenuance
-# }
+pj_index = 6
+s_index = 7
+pj_name = names_projects_with_samples[pj_index]["projectName"]
+s_name = names_projects_with_samples[pj_index]["samplesNames"][s_index]
+spectrum_index = 2
+wv_target = 700
+
+def generate_arguments_and_pair(
+        pj_index,
+        s_index,
+        spectrum_index,
+        wv_target
+    ):
+    
+            pj_name = names_projects_with_samples[pj_index]["projectName"]
+            s_name = names_projects_with_samples[pj_index]["samplesNames"][s_index]
+
+            return get_spectrum_wa_pair(
+                pj_name,
+                s_name,
+                spectrum_types[spectrum_index],
+                wv_target
+            )
+
+wa_pair_reference_B = generate_arguments_and_pair(9, 7, 0, 700)
+wa_pair_sample_A = generate_arguments_and_pair(9, 7, 1, 339)
+wa_pair_sample_B = generate_arguments_and_pair(9, 7, 2, 405)
+wa_pair_sample_D = generate_arguments_and_pair(9, 7, 3, 220)
+
+
+# Example
+#  get_spectrum_wa_pair(
+#     'Enzyme + VC + Water 27.05.2022',
+#     'Water + VC + enzyme nr2',
+#     'sample_A',
+#     350
+# )
 
 container = {
-    "projectsWithSamples": get_names_projects_with_samples()
+    "projectsWithSamples": names_projects_with_samples,
+    "spectra": {
+        "reference_B": wa_pair_reference_B,
+        "sample_A": wa_pair_sample_A,
+        "sample_B": wa_pair_sample_B,
+        "sample_D": wa_pair_sample_D
+    }
 }
 
 json_object = json.dumps(container, indent = 2)

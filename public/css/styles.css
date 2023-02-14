@@ -63,7 +63,7 @@ main {
     width: 60%;
 }
 
-#all-spectra {
+#container-all-spectra {
     margin: 5% auto;
     width: 80%;
     display: flex;

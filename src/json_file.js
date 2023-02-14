@@ -1515,5 +1515,20 @@ let jsonData = {
         "Water + VC + enzyme nr2"
       ]
     }
-  ]
+  ],
+  "spectra": {
+    "reference_B": [
+      700.0755591922143,
+      0.339284117527
+    ],
+    "sample_A": [
+      338.8552397614145,
+      0.11620434569284283
+    ],
+    "sample_B": [
+      404.8550320327822,
+      0.20487922392132896
+    ],
+    "sample_D": "Target wavelength out of interval!"
+  }
 }
