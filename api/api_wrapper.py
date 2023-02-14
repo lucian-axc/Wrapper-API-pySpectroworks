@@ -30,8 +30,8 @@ def get_names_projects_with_samples():
         else:
             samples_names = None #project has no sample items
 
-        pj_entry["project_name"] = pj.project_name
-        pj_entry["samples_names"] = samples_names
+        pj_entry["projectName"] = pj.project_name
+        pj_entry["samplesNames"] = samples_names
         projects_with_samples.append(pj_entry)
     
     return projects_with_samples

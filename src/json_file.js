@@ -1,12 +1,12 @@
 let jsonData = {
   "projectsWithSamples": [
     {
-      "project_name": "Gabriel Absorbance",
-      "samples_names": null
+      "projectName": "Gabriel Absorbance",
+      "samplesNames": null
     },
     {
-      "project_name": "Test 2",
-      "samples_names": [
+      "projectName": "Test 2",
+      "samplesNames": [
         "DI water, not fresh",
         "Test 2 for VC (high con.) in DI water",
         "<No sample name>",
@@ -390,8 +390,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "VC detection (for 120 \u03bcg per liter concentration)",
-      "samples_names": [
+      "projectName": "VC detection (for 120 \u03bcg per liter concentration)",
+      "samplesNames": [
         "water with settings: 289 - 50",
         "water with settings: 289 - 50",
         "water with settings: 289 - 50",
@@ -464,8 +464,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "Environmental Sample",
-      "samples_names": [
+      "projectName": "Environmental Sample",
+      "samplesNames": [
         "Water",
         "Water",
         "sample 11212",
@@ -486,8 +486,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "VC detection (for 5,5 \u03bcg per liter concentration)",
-      "samples_names": [
+      "projectName": "VC detection (for 5,5 \u03bcg per liter concentration)",
+      "samplesNames": [
         "water",
         "water",
         "water",
@@ -510,8 +510,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "5,5 ug of VC per ml of water",
-      "samples_names": [
+      "projectName": "5,5 ug of VC per ml of water",
+      "samplesNames": [
         "water + VC",
         "water",
         "water + VC",
@@ -521,8 +521,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "Enzyme + VC + Water 08.04.2022",
-      "samples_names": [
+      "projectName": "Enzyme + VC + Water 08.04.2022",
+      "samplesNames": [
         "water",
         "water",
         "water",
@@ -992,8 +992,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "Enzyme + VC + Water 02.05.2022",
-      "samples_names": [
+      "projectName": "Enzyme + VC + Water 02.05.2022",
+      "samplesNames": [
         "water",
         "water",
         "water",
@@ -1147,8 +1147,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "Enzyme + VC + Water 19.05.2022",
-      "samples_names": [
+      "projectName": "Enzyme + VC + Water 19.05.2022",
+      "samplesNames": [
         "water",
         "water",
         "water",
@@ -1391,8 +1391,8 @@ let jsonData = {
       ]
     },
     {
-      "project_name": "Enzyme + VC + Water 27.05.2022",
-      "samples_names": [
+      "projectName": "Enzyme + VC + Water 27.05.2022",
+      "samplesNames": [
         "water",
         "water",
         "water",

@@ -17,36 +17,24 @@
 let dropdownProjects = document.getElementById('projects-names')
 let dropdownSamples = document.getElementById('samples-names')
 
-function uploadProjectsNames() {
-    jsonData.projectsNames.forEach(name => {
-        let option = document.createElement('option')
-        option.innerText = name
-        option.setAttribute('value', name)
-        dropdownProjects.appendChild(option)
-    })
-}
-// function uploadSamplesNames(projectName) {
-//     jsonData.samplesNames.forEach(name => {
-//         let option = document.createElement('option')
-//         option.innerText = name
-//         option.setAttribute('value', name)
-//         dropdownSamples.appendChild(option)
-//     })
-// }
+let projectsNames = jsonData.projectsWithSamples.map(entry => entry.projectName)
+
 function uploadNames(names, dropdown) {
-    names.forEach(name => {
+    for (let i in names) {
         let option = document.createElement('option')
-        option.innerText = name
-        option.setAttribute('value', name)
+        option.innerText = names[i]
+        option.setAttribute('value', i)
         dropdown.appendChild(option)
-    })
+    }
 }
 
-// uploadProjectsNames()
-uploadNames(jsonData.projectsNames, dropdownProjects)
+uploadNames(projectsNames, dropdownProjects)
 
 dropdownProjects.addEventListener('click', e => {
+    dropdownSamples.innerHTML = '<option value="" default>- - -</option>'  
     if (!e.target.value) return
-    let projectName = e.target.value
-    uploadNames(jsonData.samplesNames, dropdownSamples)
+
+    let pjIndex = e.target.value
+    let samplesNames = jsonData.projectsWithSamples[pjIndex].samplesNames
+    uploadNames(samplesNames, dropdownSamples)
 })
